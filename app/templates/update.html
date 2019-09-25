@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/">HOME</a>
+<p>Total Donations: {{ render_currency(donation_total) }}</p>
+{% for amount, description in form_opts %}
+<p><form method="post">
+<input type="hidden" name="description" value="{{ description }}">
+<input type="hidden" name="amount" value="{{ amount }}">
+<input type="submit" value="{{ description }}:&nbsp;&nbsp;{{ render_currency(amount) }}">
+</form></p>
+{% endfor %}
+<p><form method="post">
+Custom<br>
+Description: <input type="text" name="description"><br>
+Amount: <input type="text" name="major_amount"><br>
+<input type="submit" name="action" value="Submit"><br>
+<input type="submit" name="action" value="Save">
+</form></p>
+{% endblock %}

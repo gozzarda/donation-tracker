@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta http-equiv="refresh" content="5">
+<div style="text-align:right;font-size:48px">
+Total Donations: {{ render_currency(donation_total) }}
+</div>
+{% for amount, description in recents %}
+<div style="text-align:right;font-size:24px">
+{{ description }}:&nbsp;&nbsp;&nbsp;&nbsp;{{ render_currency(amount) }}
+</div>
+{% endfor %}
+
+<p style="font-size:32px">That's enough to buy {{ num_cans }} cans of food!</p>
+<p style="font-size:24px">{% for i in range(num_cans) %}🥫{% endfor %}</p>
+
+<div style="text-align:right;font-size:32px">
+Tags by total donations:
+</div>
+{% for amount, tag in top_tags %}
+<div style="text-align:right;font-size:18px">
+{{ tag }}:&nbsp;&nbsp;&nbsp;&nbsp;{{ render_currency(amount) }}
+</div>
+{% endfor %}
+
+<footer>All listed amounts are running estimates, pending a final count.</footer>
+{% endblock %}
