@@ -2,7 +2,7 @@ import csv
 import re
 from starlette.applications import Starlette
 from starlette.endpoints import HTTPEndpoint
-from starlette.staticfiles import StaticFiles
+# from starlette.staticfiles import StaticFiles
 from starlette.responses import HTMLResponse, RedirectResponse
 from starlette.templating import Jinja2Templates
 import uvicorn
@@ -10,7 +10,7 @@ import uvicorn
 templates = Jinja2Templates(directory='templates')
 
 app = Starlette(debug=True)
-app.mount('/static', StaticFiles(directory='statics'), name='static')
+# app.mount('/static', StaticFiles(directory='statics'), name='static')
 
 COST_PER_CAN = 75
 NUM_RECENTS = 5
@@ -18,8 +18,8 @@ CURRENCY_MINOR = 100
 
 TAG_PATTERN = '#\\S+'
 
-DATA_FILE = 'donations.csv'
-OPTS_FILE = 'form_opts.csv'
+DATA_FILE = '/data/donations.csv'
+OPTS_FILE = '/data/form_opts.csv'
 
 donations = []
 donation_total = 0

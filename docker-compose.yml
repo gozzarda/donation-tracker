@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  donation-tracker:
+    build: .
+    image: donation-tracker
+    container_name: donation-tracker
+    volumes:
+      - ${TRACKER_PERSISTENT_ROOT}:/data
+    networks:
+      - web
+    labels:
+      - traefik.frontend.rule=Host:tracker.gozz.id.au
+      - traefik.port=80
+    restart: always
+
+networks:
+  web:
+    external: true
