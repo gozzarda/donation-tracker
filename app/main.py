@@ -27,9 +27,13 @@ tag_totals = {}
 form_opts = []
 
 def csv_read_rows(path):
-    with open(path) as fp:
-        reader = csv.reader(fp)
-        return list(reader)
+    try:
+        with open(path) as fp:
+            reader = csv.reader(fp)
+            return list(reader)
+    except:
+        open(path, 'w').close()
+        return []
 
 def csv_push_row(path, row):
     with open(path, 'a+', newline='') as fp:
